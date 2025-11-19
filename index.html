@@ -1,28 +1,163 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marijaneiro - Em Breve</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Link Tree do Ari - Ilha ACNH (Clean)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              "acnh-sky": "#b2ebf2" /* Azul Pastel Claro */,
+              "acnh-leaf": "#00695c" /* Verde Mar Profundo */,
+              "acnh-sand": "#fffbea" /* Amarelo Areia Suave */,
+              "acnh-hover": "#c8e6c9" /* Verde Mint Pastel */,
+              "acnh-border": "#80cbc4" /* Aqua Suave */,
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJbT4fJ+sJqJ0I4q6dFqB95m3pQ+88s6c0V72A9Qo4B/V3s9G2Z7Cq8w/20+w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+
+    <style>
+      :root {
+        --color-bg-start: #b2ebf2; /* Azul Pastel (céu claro) */
+        --color-bg-end: #eaf7fa; /* Branco-Azulado muito claro */
+        --color-text: #00695c;
+        --color-link-bg: #fffbea; /* Fundo Areia Clara (NookPhone) */
+        --color-link-bg-hover: #c8e6c9; /* Hover em Verde Mint Pastel */
+        --color-link-border: #80cbc4; /* Aqua Suave */
+        --color-profile-border: #4db6ac;
+      }
+
+      /* 1. Define Keyframes para o Fade In com Slide Up */
+      @keyframes fadeInSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Aplica o gradiente ao body */
+      body {
+        background: linear-gradient(180deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
+        background-attachment: fixed;
+        color: var(--color-text);
+        transition: color 0.3s;
+      }
+
+      /* Estilos dos links - Bubbly/NookPhone Look */
+      .link-card {
+        background-color: var(--color-link-bg);
+        border: 2px solid var(--color-link-border);
+        color: var(--color-text);
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 4px 0 0 var(--color-link-border);
+      }
+      .link-card i {
+        color: var(--color-text);
+      }
+
+      .link-card:hover {
+        background-color: var(--color-link-bg-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 0 0 var(--color-link-border);
+      }
+
+      /* Estilo da borda da foto de perfil */
+      .profile-border {
+        border-color: var(--color-profile-border);
+      }
+
+      /* 2. Estilo inicial (escondido) para todos os elementos que vão animar */
+      .fade-in-item {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      /* 3. Classe que ativa a animação. Duração aumentada para 1.0s. */
+      .animate-slide {
+        animation: fadeInSlideUp 1s ease-out forwards;
+        will-change: opacity, transform; /* Otimização de performance para transições suaves */
+      }
+    </style>
   </head>
-  <body>
-    <div class="container">
-      <h1>Estamos chegando!</h1>
-      <p>Nosso site está quase pronto. Fique ligado!</p>
+  <body class="font-sans min-h-screen pt-12 pb-12">
+    <!-- Container Principal Centrado (Mobile-first: max-w-sm no centro) -->
+    <div class="max-w-sm mx-auto p-4 flex flex-col items-center">
+      <!-- Foto de Perfil Circular -->
+      <div class="fade-in-item w-32 h-32 rounded-full overflow-hidden border-4 profile-border shadow-xl mb-6">
+        <img
+          src="https://raw.githubusercontent.com/ariyasuu/marijaneiro/refs/heads/main/perfil.webp"
+          alt="Eu que fiz esse desenho, bleeeeh"
+          class="w-full h-full object-cover" />
+      </div>
+
+      <!-- Título Principal -->
+      <h1 class="fade-in-item text-3xl font-bold mb-1 text-center" style="color: var(--color-text)">Mari Janeiro</h1>
+
+      <!-- Subtítulo / Bio Curta -->
+      <p class="fade-in-item text-lg mb-8 text-center opacity-80" style="color: var(--color-text)">Ilustradora | Modeladora 3D | Guaxinim Profissional.</p>
+
+      <!-- Seção de Links -->
+      <div class="w-full space-y-4">
+        <a
+          href="https://instagram.com/marina.janeiro"
+          target="_blank"
+          class="fade-in-item link-card flex items-center justify-center p-4 rounded-3xl font-bold shadow-md">
+          <i class="fab fa-instagram w-6 text-2xl mr-4"></i>
+          <span class="truncate">Instagram</span>
+        </a>
+
+        <a href="https://discord.gg/" target="_blank" class="fade-in-item link-card flex items-center justify-center p-4 rounded-3xl font-bold shadow-md">
+          <i class="fab fa-discord w-6 text-2xl mr-4"></i>
+          <span class="truncate">Discord</span>
+        </a>
+
+        <a href="https://wa.me/" target="_blank" class="fade-in-item link-card flex items-center justify-center p-4 rounded-3xl font-bold shadow-md">
+          <i class="fab fa-whatsapp w-6 text-2xl mr-4"></i>
+          <span class="truncate">WhatsApp</span>
+        </a>
+
+        <!-- Link 4: Portfolio/Site Pessoal (comentado, mas mantendo a classe se for descomentar) -->
+        <!-- <a href="https://seusite.com" target="_blank" class="fade-in-item link-card flex items-center justify-center p-4 rounded-3xl font-bold shadow-md">
+                <i class="fas fa-globe w-6 text-2xl mr-4"></i>
+                <span class="truncate">Portfólio</span>
+            </a> -->
+      </div>
+
+      <!-- Rodapé Simples -->
+      <footer class="fade-in-item mt-12 text-sm opacity-60 text-center" style="color: var(--color-text)">Obrigada por visitar meu site 🦝</footer>
     </div>
 
-    <!-- Ondas SVG -->
-    <div class="waves">
-      <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
-        <path d="M0,100 C300,200 900,0 1200,100 L1200,200 L0,200 Z" fill="#a0d8ef" />
-      </svg>
-      <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
-        <path d="M0,120 C400,220 800,20 1200,120 L1200,200 L0,200 Z" fill="#87ceeb" />
-      </svg>
-      <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
-        <path d="M0,140 C500,240 700,40 1200,140 L1200,200 L0,200 Z" fill="#6cb4ee" />
-      </svg>
-    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const elementsToAnimate = document.querySelectorAll(".fade-in-item");
+
+        elementsToAnimate.forEach((element, index) => {
+          // Atraso escalonado (staggered delay) aumentado para 150ms para maior visibilidade do efeito cascata
+          const delay = index * 150;
+
+          setTimeout(() => {
+            element.classList.add("animate-slide");
+          }, delay);
+        });
+      });
+    </script>
   </body>
 </html>
