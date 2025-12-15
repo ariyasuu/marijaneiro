@@ -1,164 +1,621 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MariJaneiro | Artista Visual</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Inter", "sans-serif"],
-            },
-            colors: {
-              "acnh-sky": "#b2ebf2" /* Azul Pastel Claro */,
-              "acnh-leaf": "#00695c" /* Verde Mar Profundo */,
-              "acnh-sand": "#fffbea" /* Amarelo Areia Suave */,
-              "acnh-hover": "#c8e6c9" /* Verde Mint Pastel */,
-              "acnh-border": "#80cbc4" /* Aqua Suave */,
-            },
-          },
-        },
-      };
-    </script>
+    <title>Mari Janeiro | Ilustradora & Artista 3D</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJbT4fJ+sJqJ0I4q6dFqB95m3pQ+88s6c0V72A9Qo4B/V3s9G2Z7Cq8w/20+w=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer" />
-
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦝</text></svg>" />
     <style>
-      :root {
-        --color-bg-start: #b2ebf2; /* Azul Pastel (céu claro) */
-        --color-bg-end: #eaf7fa; /* Branco-Azulado muito claro */
-        --color-text: #00695c;
-        --color-link-bg: #fffbea; /* Fundo Areia Clara (NookPhone) */
-        --color-link-bg-hover: #c8e6c9; /* Hover em Verde Mint Pastel */
-        --color-link-border: #80cbc4; /* Aqua Suave */
-        --color-profile-border: #4db6ac;
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial Rounded MT Bold", "Tahoma", sans-serif;
+        overflow: hidden;
+        min-height: 100vh;
+        width: 100vw;
+        background: repeating-linear-gradient(-45deg, #00c7e2, #00c7e2 30px, #38cce8 30px, #38cce8 60px);
+        background-size: 200% 200%;
+        animation: moveBackground 35s linear infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+        background-attachment: fixed;
       }
 
-      /* 1. Define Keyframes para o Fade In com Slide Up */
-      @keyframes fadeInSlideUp {
+      /* Cartão Principal */
+      .acnh-card {
+        background-color: #fffbe8;
+        padding: 40px 30px;
+        border-radius: 40px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        max-width: 350px;
+        width: 100%;
+        text-align: center;
+        border: 3px solid #ffde63;
+        position: relative;
+        padding-bottom: 60px;
+        transition: transform 0.3s ease;
+      }
+
+      .acnh-card h1 {
+        font-size: 2.2em;
+        font-weight: 800;
+        color: #38cce8;
+        margin-bottom: 5px;
+        text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+      }
+
+      .acnh-card h2 {
+        font-size: 1rem;
+        color: #69a74e;
+        font-weight: 600;
+      }
+
+      .acnh-card p {
+        color: #4b5563;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        line-height: 1.4;
+      }
+
+      .link-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .link-list a,
+      .link-list button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-decoration: none;
+        padding: 15px 25px;
+        border-radius: 50px;
+        background-color: #ffde63;
+        color: #795548;
+        font-weight: bold;
+        font-size: 1em;
+        box-shadow: 0 4px 0 0 #ffb347;
+        transition: all 0.1s ease;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .link-list a i,
+      .link-list button i {
+        font-size: 1.1em;
+      }
+
+      .link-list a:hover,
+      .link-list button:hover {
+        background: repeating-linear-gradient(-45deg, #ffde63, #ffde63 20px, #ffb347 20px, #ffb347 40px);
+        background-size: 200% 200%;
+        animation: moveButtonBackground 5s linear infinite;
+        box-shadow: 0 2px 0 0 #f5a331;
+        transform: translateY(2px);
+      }
+
+      .avatar {
+        width: 150px;
+        height: 150px;
+        background-color: #f7a9b8;
+        border-radius: 50%;
+        margin: 0 auto 15px auto;
+        border: 4px solid white;
+        box-shadow: 0 0 0 4px #ffde63;
+        overflow: hidden;
+      }
+
+      @keyframes moveBackground {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 50% 50%;
+        }
+      }
+
+      @keyframes moveButtonBackground {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 50% 50%;
+        }
+      }
+
+      p.disclaimer {
+        position: absolute;
+        bottom: 12px;
+        right: 0;
+        left: 0;
+        font-size: 0.8rem;
+        margin: 0;
+      }
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .portfolio-modal {
+        background-color: #fffbe8;
+        border-radius: 40px;
+        border: 3px solid #ffde63;
+        width: 100%;
+        max-width: 500px;
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .modal-overlay.active .portfolio-modal {
+        transform: scale(1);
+      }
+      .modal-header {
+        background-color: #ffde63;
+        padding: 15px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #795548;
+      }
+
+      .modal-title {
+        font-weight: 800;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .close-btn {
+        background: #ffb347;
+        border: none;
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s;
+        font-size: 1.2em;
+      }
+
+      .close-btn:hover {
+        transform: scale(1.1);
+        background: #f5a331;
+      }
+      .modal-content {
+        padding: 20px;
+        overflow-y: auto;
+        flex: 1;
+      }
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .grid-item {
+        aspect-ratio: 1;
+        background-color: #eee;
+        border-radius: 15px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.2s;
+        position: relative;
+      }
+
+      .grid-item:hover {
+        transform: scale(1.05);
+        border-color: #38cce8;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+      }
+
+      .grid-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .multi-icon {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border-radius: 4px;
+        padding: 2px 5px;
+        font-size: 0.7em;
+      }
+      .detail-view {
+        display: none;
+        flex-direction: column;
+        animation: fadeIn 0.3s;
+      }
+
+      .detail-image-container {
+        width: 100%;
+        height: 300px;
+        background-color: #eee;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 15px;
+        border: 2px solid #ffde63;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .detail-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.2s ease;
+      }
+      .gallery-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.7);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: #795548;
+        font-size: 1.2em;
+        cursor: pointer;
+        display: none; /* Só aparece se tiver múltiplas imagens */
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        transition: background 0.2s;
+      }
+
+      .gallery-btn:hover {
+        background: white;
+      }
+
+      .gallery-btn.prev {
+        left: 10px;
+      }
+      .gallery-btn.next {
+        right: 10px;
+      }
+      .gallery-indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        z-index: 5;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      .dot.active {
+        background: #ffde63;
+        transform: scale(1.2);
+      }
+
+      .detail-info h3 {
+        color: #38cce8;
+        margin: 0 0 10px 0;
+        font-size: 1.5em;
+      }
+
+      .detail-info p {
+        color: #4b5563;
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+
+      .detail-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .btn-action {
+        flex: 1;
+        padding: 12px;
+        border-radius: 25px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        font-family: inherit;
+        text-decoration: none;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9em;
+        transition: transform 0.1s;
+      }
+
+      .btn-back {
+        background-color: #e0e0e0;
+        color: #555;
+      }
+
+      .btn-visit {
+        background-color: #69a74e;
+        color: white;
+        box-shadow: 0 4px 0 0 #4e8536;
+      }
+
+      .btn-visit:hover {
+        transform: translateY(2px);
+        box-shadow: 0 2px 0 0 #4e8536;
+      }
+
+      .btn-back:hover {
+        background-color: #d0d0d0;
+      }
+
+      @keyframes fadeIn {
         from {
           opacity: 0;
-          transform: translateY(20px);
+          transform: translateY(10px);
         }
         to {
           opacity: 1;
           transform: translateY(0);
         }
       }
-
-      /* Aplica o gradiente ao body */
-      body {
-        background: linear-gradient(180deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
-        background-attachment: fixed;
-        color: var(--color-text);
-        transition: color 0.3s;
+      .modal-content::-webkit-scrollbar {
+        width: 8px;
       }
-
-      /* Estilos dos links - Bubbly/NookPhone Look */
-      .link-card {
-        background-color: var(--color-link-bg);
-        border: 2px solid var(--color-link-border);
-        color: var(--color-text);
-        transition: all 0.2s ease-in-out;
-        box-shadow: 0 4px 0 0 var(--color-link-border);
+      .modal-content::-webkit-scrollbar-track {
+        background: #fffbe8;
       }
-      .link-card i {
-        color: var(--color-text);
+      .modal-content::-webkit-scrollbar-thumb {
+        background: #ffde63;
+        border-radius: 4px;
       }
-
-      .link-card:hover {
-        background-color: var(--color-link-bg-hover);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 0 0 var(--color-link-border);
-      }
-
-      /* Estilo da borda da foto de perfil */
-      .profile-border {
-        border-color: var(--color-profile-border);
-      }
-
-      /* 2. Estilo inicial (escondido) para todos os elementos que vão animar */
-      .fade-in-item {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      /* 3. Classe que ativa a animação. Duração aumentada para 1.0s. */
-      .animate-slide {
-        animation: fadeInSlideUp 1s ease-out forwards;
-        will-change: opacity, transform; /* Otimização de performance para transições suaves */
+      .modal-content::-webkit-scrollbar-thumb:hover {
+        background: #ffb347;
       }
     </style>
   </head>
-  <body class="font-sans min-h-screen pt-12 pb-12">
-    <!-- Container Principal Centrado (Mobile-first: max-w-sm no centro) -->
-    <div class="max-w-sm mx-auto p-4 flex flex-col items-center">
-      <!-- Foto de Perfil Circular -->
-      <div class="fade-in-item w-32 h-32 rounded-full overflow-hidden border-4 profile-border shadow-xl mb-6">
+  <body>
+    <div class="acnh-card">
+      <div class="avatar">
         <img
           src="https://raw.githubusercontent.com/ariyasuu/marijaneiro/refs/heads/main/perfil.webp"
-          alt="Eu que fiz esse desenho, bleeeeh"
-          class="w-full h-full object-cover" />
+          width="100%"
+          height="100%"
+          style="object-fit: cover"
+          alt="Avatar" />
+      </div>
+      <h1>Mari Janeiro</h1>
+      <h2>Ilustradora & Artista 3D</h2>
+      <p>(não colocar no microondas)</p>
+
+      <div class="link-list">
+        <a href="#"><i class="fa-solid fa-shopping-cart"></i> Shop</a>
+        <a href="https://www.instagram.com/marina.janeiro/"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <button id="portfolioBtn"><i class="fa-solid fa-book"></i> Portfolio</button>
       </div>
 
-      <!-- Título Principal -->
-      <h1 class="fade-in-item text-3xl font-bold mb-1 text-center" style="color: var(--color-text)">Mari Janeiro</h1>
+      <p class="disclaimer">Obrigada por visitar meu site!</p>
+    </div>
 
-      <!-- Subtítulo / Bio Curta -->
-      <p class="fade-in-item text-lg mb-8 text-center opacity-80" style="color: var(--color-text)">Ilustradora | Modeladora 3D | Guaxinim Profissional.</p>
+    <div class="modal-overlay" id="portfolioModal">
+      <div class="portfolio-modal">
+        <div class="modal-header">
+          <div class="modal-title"><i class="fa-solid fa-folder-open"></i> Meu Portfólio</div>
+          <button class="close-btn" id="closeModalBtn"><i class="fa-solid fa-times"></i></button>
+        </div>
 
-      <!-- Seção de Links -->
-      <div class="w-full space-y-4">
-        <a
-          href="https://instagram.com/marina.janeiro"
-          target="_blank"
-          class="fade-in-item link-card flex items-center justify-center p-4 rounded-3xl font-bold shadow-md">
-          <i class="fab fa-instagram w-6 text-2xl mr-4"></i>
-          <span class="truncate">Instagram</span>
-        </a>
+        <div class="modal-content">
+          <div class="portfolio-grid" id="portfolioGrid"></div>
 
-        <a href="https://discord.gg/" target="_blank" class="fade-in-item link-card flex items-center justify-center p-4 rounded-3xl font-bold shadow-md">
-          <i class="fab fa-discord w-6 text-2xl mr-4"></i>
-          <span class="truncate">Discord</span>
-        </a>
+          <div class="detail-view" id="detailView">
+            <div class="detail-image-container">
+              <button class="gallery-btn prev" id="prevImgBtn"><i class="fa-solid fa-chevron-left"></i></button>
+              <img id="detailImage" src="" alt="Detalhe" />
+              <button class="gallery-btn next" id="nextImgBtn"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="gallery-indicators" id="galleryIndicators"></div>
+            </div>
 
-        <a href="https://wa.me/" target="_blank" class="fade-in-item link-card flex items-center justify-center p-4 rounded-3xl font-bold shadow-md">
-          <i class="fab fa-whatsapp w-6 text-2xl mr-4"></i>
-          <span class="truncate">WhatsApp</span>
-        </a>
-
-        <!-- Link 4: Portfolio/Site Pessoal (comentado, mas mantendo a classe se for descomentar) -->
-        <!-- <a href="https://seusite.com" target="_blank" class="fade-in-item link-card flex items-center justify-center p-4 rounded-3xl font-bold shadow-md">
-                <i class="fas fa-globe w-6 text-2xl mr-4"></i>
-                <span class="truncate">Portfólio</span>
-            </a> -->
+            <div class="detail-info">
+              <h3 id="detailTitle">Título</h3>
+              <p id="detailDescription">Descrição...</p>
+              <div class="detail-actions">
+                <button class="btn-action btn-back" id="backToGridBtn"><i class="fa-solid fa-arrow-left"></i> Voltar</button>
+                <a href="#" target="_blank" class="btn-action btn-visit" id="detailLink"> Ver Projeto <i class="fa-solid fa-external-link-alt"></i> </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- Rodapé Simples -->
-      <footer class="fade-in-item mt-12 text-sm opacity-60 text-center" style="color: var(--color-text)">Obrigada por visitar meu site 🦝</footer>
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const elementsToAnimate = document.querySelectorAll(".fade-in-item");
-
-        elementsToAnimate.forEach((element, index) => {
-          // Atraso escalonado (staggered delay) aumentado para 150ms para maior visibilidade do efeito cascata
-          const delay = index * 150;
-
-          setTimeout(() => {
-            element.classList.add("animate-slide");
-          }, delay);
-        });
+      const portfolioItems = [
+        {
+          id: 1,
+          title: "Chloe",
+          images: ["https://i.imgur.com/0lkcn9D.jpeg", "https://i.imgur.com/WvoKA1B.jpeg"],
+          description:
+            "Nunca imaginei que depois de tanto tempo, eu voltaria aqui não com uma arte qualquer, mas com uma arte que tentasse simbolizar o quão importante e amada você foi.Ainda dói muito saber que você não está mais aqui, mas como me disseram esses dias, a dor vem na mesma intensidade do amor, e é por isso que dói tanto. Agradeço novamente, por ter feito parte da minha vida e ter alegrado tantos dias com sua preguicinha, palhaçadinhas e sua vontade imensa de sempre querer ficar com o buchinho cheio.\n Tenho certeza que você sabe o quanto foi amada e a falta que você faz. Você descansou depois de lutar bravamente e agora, imagino que você esteja no seu cantinho, em um lugar bom e sem sofrimento, mas ainda cheio de amor. \n Até uma próxima minha porpetinha guerreirinha, te amo ❤️",
+          link: "https://www.instagram.com/p/DKQVAjzRYlA",
+        },
+        {
+          id: 2,
+          title: "Sasha com QI negativo",
+          image: "https://i.imgur.com/PgdUaUg.jpeg",
+          description: "O coelho engraçado tá comendo giz de cera, é mole?",
+          link: "#",
+        },
+        {
+          id: 3,
+          title: "Astronaut Cat Girl",
+          image: "https://i.imgur.com/ZEETRMz.jpeg",
+          description: "Não faço ideia do que escrever aqui eu não dormi ainda",
+          link: "#",
+        },
+        {
+          id: 4,
+          title: "Sasha muito timido",
+          image: "https://i.imgur.com/qVxtDMN.png",
+          description: "o coelho engraçado depois de ver homens sarados e peludos (provavelmente foi o Moose do AC:NH)",
+          link: "#",
+        },
+      ];
+      const portfolioBtn = document.getElementById("portfolioBtn");
+      const modalOverlay = document.getElementById("portfolioModal");
+      const closeModalBtn = document.getElementById("closeModalBtn");
+      const portfolioGrid = document.getElementById("portfolioGrid");
+      const detailView = document.getElementById("detailView");
+      const backToGridBtn = document.getElementById("backToGridBtn");
+      const detailImage = document.getElementById("detailImage");
+      const detailTitle = document.getElementById("detailTitle");
+      const detailDescription = document.getElementById("detailDescription");
+      const detailLink = document.getElementById("detailLink");
+      const prevImgBtn = document.getElementById("prevImgBtn");
+      const nextImgBtn = document.getElementById("nextImgBtn");
+      const galleryIndicators = document.getElementById("galleryIndicators");
+      let currentGalleryImages = [];
+      let currentImageIndex = 0;
+      portfolioBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        modalOverlay.classList.add("active");
+        showGrid();
       });
+      closeModalBtn.addEventListener("click", () => {
+        modalOverlay.classList.remove("active");
+      });
+      modalOverlay.addEventListener("click", (e) => {
+        if (e.target === modalOverlay) modalOverlay.classList.remove("active");
+      });
+      function renderGrid() {
+        portfolioGrid.innerHTML = "";
+        portfolioItems.forEach((item) => {
+          const thumbSrc = item.images ? item.images[0] : item.image;
+          const isMulti = item.images && item.images.length > 1;
+
+          const div = document.createElement("div");
+          div.className = "grid-item";
+
+          let htmlContent = `<img src="${thumbSrc}" alt="${item.title}">`;
+          if (isMulti) {
+            htmlContent += `<div class="multi-icon"><i class="fa-solid fa-images"></i></div>`;
+          }
+
+          div.innerHTML = htmlContent;
+          div.addEventListener("click", () => showDetail(item));
+          portfolioGrid.appendChild(div);
+        });
+      }
+      function showDetail(item) {
+        if (item.images && item.images.length > 0) {
+          currentGalleryImages = item.images;
+        } else {
+          currentGalleryImages = [item.image];
+        }
+        currentImageIndex = 0;
+        detailTitle.textContent = item.title;
+        detailDescription.textContent = item.description;
+        detailLink.href = item.link;
+        updateGalleryView();
+        portfolioGrid.style.display = "none";
+        detailView.style.display = "flex";
+        document.querySelector(".modal-content").scrollTop = 0;
+      }
+      function updateGalleryView() {
+        detailImage.style.opacity = "0.5";
+        setTimeout(() => {
+          detailImage.src = currentGalleryImages[currentImageIndex];
+          detailImage.style.opacity = "1";
+        }, 150);
+        if (currentGalleryImages.length > 1) {
+          prevImgBtn.style.display = "flex";
+          nextImgBtn.style.display = "flex";
+          renderIndicators();
+        } else {
+          prevImgBtn.style.display = "none";
+          nextImgBtn.style.display = "none";
+          galleryIndicators.innerHTML = "";
+        }
+      }
+      function renderIndicators() {
+        galleryIndicators.innerHTML = "";
+        currentGalleryImages.forEach((_, index) => {
+          const dot = document.createElement("div");
+          dot.className = `dot ${index === currentImageIndex ? "active" : ""}`;
+          galleryIndicators.appendChild(dot);
+        });
+      }
+      function nextImage() {
+        currentImageIndex++;
+        if (currentImageIndex >= currentGalleryImages.length) {
+          currentImageIndex = 0;
+        }
+        updateGalleryView();
+      }
+      function prevImage() {
+        currentImageIndex--;
+        if (currentImageIndex < 0) {
+          currentImageIndex = currentGalleryImages.length - 1;
+        }
+        updateGalleryView();
+      }
+      nextImgBtn.addEventListener("click", nextImage);
+      prevImgBtn.addEventListener("click", prevImage);
+      function showGrid() {
+        detailView.style.display = "none";
+        portfolioGrid.style.display = "grid";
+      }
+      backToGridBtn.addEventListener("click", showGrid);
+      renderGrid();
     </script>
   </body>
 </html>
-
